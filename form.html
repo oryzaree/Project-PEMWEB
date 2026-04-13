@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pemesanan - Kopi adalah Jawaban</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .order-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 50px rgba(92,51,23,0.12);
+      border: 1px solid var(--latte);
+    }
+    .order-side {
+      background: linear-gradient(160deg, var(--espresso), var(--medium-roast));
+      border-radius: 20px;
+      padding: 36px;
+      color: var(--cream);
+    }
+    .order-side h4 { font-family:'Playfair Display',serif; color:var(--caramel); margin-bottom:20px; }
+    .order-item {
+      display:flex; align-items:center; gap:14px;
+      margin-bottom:16px; padding-bottom:16px;
+      border-bottom: 1px solid rgba(198,134,66,0.2);
+    }
+    .order-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+    .oi-img { width:52px; height:52px; border-radius:10px; object-fit:cover; flex-shrink:0; }
+    .oi-name { font-weight:700; font-size:0.9rem; color:var(--cream); }
+    .oi-price { font-size:0.82rem; color:var(--caramel); }
+
+    /* Table */
+    #tabelPesanan { display:none; }
+    .table-wrapper {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 15px 50px rgba(92,51,23,0.12);
+      border: 1px solid var(--latte);
+      margin-top: 40px;
+    }
+    .badge-status {
+      background: rgba(198,134,66,0.2);
+      color: var(--golden-brown);
+      font-size:0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-weight: 700;
+    }
+    .total-row td {
+      font-weight: 700;
+      color: var(--espresso);
+      font-size: 1rem;
+    }
+    .total-row .price-total { color: var(--caramel); font-size: 1.1rem; }
+    .table thead th {
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .no-data-msg {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    .no-data-msg i { font-size: 3rem; color: var(--latte); display:block; margin-bottom:12px; }
+    .order-number {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">Kopi adalah Jawaban</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link btn-pesan active" href="form.html">Pesan Sekarang</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container position-relative z-1">
+    <p class="section-eyebrow-light">Order Online</p>
+    <h1 class="page-hero-title">Form Pemesanan</h1>
+    <p class="page-hero-sub">Pesan kopi favoritmu dan kami siapkan dengan penuh cinta.</p>
+    <div class="page-hero-deco"></div>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="py-5 section-cream">
+  <div class="container">
+    <div class="row g-5">
+      <!-- FORM -->
+      <div class="col-lg-8">
+        <div class="order-card">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--espresso); margin-bottom:6px;">Data Pemesanan</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:28px;">Isi semua kolom dengan lengkap agar pesananmu segera kami proses.</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="fNama">Nama Lengkap <span style="color:var(--caramel);">*</span></label>
+              <input type="text" class="form-control" id="fNama" placeholder="Nama kamu"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fEmail">Email <span style="color:var(--caramel);">*</span></label>
+              <input type="email" class="form-control" id="fEmail" placeholder="email@kamu.com"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fTelp">No. Telepon</label>
+              <input type="text" class="form-control" id="fTelp" placeholder="+62 8xx-xxxx-xxxx"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fPesanan">Pilihan Kopi <span style="color:var(--caramel);">*</span></label>
+              <select class="form-select" id="fPesanan">
+                <option value="" disabled selected>-- Pilih Menu --</option>
+                <option value="Kopi Hitam - Rp 18.000" data-harga="18000">Kopi Hitam - Rp 18.000</option>
+                <option value="Caffe Latte - Rp 28.000" data-harga="28000">Caffe Latte - Rp 28.000</option>
+                <option value="Cappuccino - Rp 30.000" data-harga="30000">Cappuccino - Rp 30.000</option>
+                <option value="Espresso - Rp 22.000" data-harga="22000">Espresso - Rp 22.000</option>
+                <option value="Americano - Rp 20.000" data-harga="20000">Americano - Rp 20.000</option>
+                <option value="Cold Brew - Rp 32.000" data-harga="32000">Cold Brew - Rp 32.000</option>
+                <option value="Matcha Latte - Rp 29.000" data-harga="29000">Matcha Latte - Rp 29.000</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fJumlah">Jumlah <span style="color:var(--caramel);">*</span></label>
+              <input type="number" class="form-control" id="fJumlah" placeholder="1" min="1" max="99" value="1"/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fSuhu">Suhu</label>
+              <select class="form-select" id="fSuhu">
+                <option value="Panas">Panas</option>
+                <option value="Dingin">Dingin (Iced)</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="fCatatan">Catatan Tambahan</label>
+              <textarea class="form-control" id="fCatatan" rows="3" placeholder="Contoh: kurangi gula, tambah es, dll."></textarea>
+            </div>
+            <div class="col-12 mt-2">
+              <button class="btn btn-primary-custom w-100" style="padding:14px; font-size:1rem;" onclick="tambahPesanan()">
+                <i class="bi bi-plus-circle me-2"></i> Tambah ke Daftar Pesanan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR MENU -->
+      <div class="col-lg-4">
+        <div class="order-side">
+          <h4>Menu Pilihan</h4>
+          <div class="order-item">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=120&q=80" alt="Kopi Hitam" class="oi-img"/>
+            <div>
+              <div class="oi-name">Kopi Hitam</div>
+              <div class="oi-price">Rp 18.000</div>
+            </div>
+          </div>
+          <div class="order-item">
+            <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=120&q=80" alt="Latte" class="oi-img"/>
+            <div>
+              <div class="oi-name">Caffe Latte</div>
+              <div class="oi-price">Rp 28.000</div>
+            </div>
+          </div>
+          <div class="order-item">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=120&q=80" alt="Cappuccino" class="oi-img"/>
+            <div>
+              <div class="oi-name">Cappuccino</div>
+              <div class="oi-price">Rp 30.000</div>
+            </div>
+          </div>
+          <div class="order-item">
+            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=120&q=80" alt="Espresso" class="oi-img"/>
+            <div>
+              <div class="oi-name">Espresso</div>
+              <div class="oi-price">Rp 22.000</div>
+            </div>
+          </div>
+          <div class="order-item">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=120&q=80" alt="Cold Brew" class="oi-img"/>
+            <div>
+              <div class="oi-name">Cold Brew</div>
+              <div class="oi-price">Rp 32.000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jam Operasional -->
+        <div style="background:white; border-radius:16px; padding:24px; border:1px solid var(--latte); margin-top:20px;">
+          <h6 style="font-family:'Playfair Display',serif; color:var(--espresso); margin-bottom:14px;">Jam Order</h6>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;"><i class="bi bi-clock me-2" style="color:var(--caramel);"></i>Senin - Jumat: 07.00 - 21.30</p>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0;"><i class="bi bi-clock me-2" style="color:var(--caramel);"></i>Sabtu - Minggu: 08.00 - 22.30</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE SECTION -->
+    <div id="tabelPesanan" class="table-wrapper">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+        <div>
+          <h4 style="font-family:'Playfair Display',serif; color:var(--espresso); margin-bottom:4px;">Daftar Pesanan</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Ringkasan semua pesanan yang masuk</p>
+        </div>
+        <button class="btn btn-outline-custom btn-sm" onclick="hapusSemuaPesanan()">
+          <i class="bi bi-trash me-1"></i> Hapus Semua
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-kopi align-middle">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>No. Order</th>
+              <th>Nama Pelanggan</th>
+              <th>Email</th>
+              <th>Pesanan</th>
+              <th>Suhu</th>
+              <th>Jumlah</th>
+              <th>Harga Satuan</th>
+              <th>Total Harga</th>
+              <th>Catatan</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tabelBody">
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="8" class="text-end">Grand Total:</td>
+              <td class="price-total" id="grandTotal">Rp 0</td>
+              <td colspan="3"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h4 class="footer-brand">Kopi adalah Jawaban</h4>
+        <p class="footer-desc">Meracik kopi terbaik dari biji pilihan petani lokal Nusantara sejak 2019.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Halaman</h6>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Lainnya</h6>
+        <ul class="footer-links">
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="form.html">Pemesanan</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Kunjungi Kami</h6>
+        <p class="footer-contact"><i class="bi bi-geo-alt-fill me-2"></i>Jl. Kopi Nusantara No.17, Surabaya</p>
+        <p class="footer-contact"><i class="bi bi-clock-fill me-2"></i>Senin - Minggu, 07.00 - 22.00</p>
+        <p class="footer-contact"><i class="bi bi-telephone-fill me-2"></i>+62 812-3456-7890</p>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <p class="footer-copy text-center">&copy; 2024 Kopi adalah Jawaban. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  let pesananList = [];
+  let orderCounter = 1;
+
+  const hargaMap = {
+    'Kopi Hitam - Rp 18.000': 18000,
+    'Caffe Latte - Rp 28.000': 28000,
+    'Cappuccino - Rp 30.000': 30000,
+    'Espresso - Rp 22.000': 22000,
+    'Americano - Rp 20.000': 20000,
+    'Cold Brew - Rp 32.000': 32000,
+    'Matcha Latte - Rp 29.000': 29000
+  };
+
+  function formatRupiah(angka) {
+    return 'Rp ' + angka.toLocaleString('id-ID');
+  }
+
+  function tambahPesanan() {
+    const nama = document.getElementById('fNama').value.trim();
+    const email = document.getElementById('fEmail').value.trim();
+    const pesanan = document.getElementById('fPesanan').value;
+    const jumlah = parseInt(document.getElementById('fJumlah').value);
+    const suhu = document.getElementById('fSuhu').value;
+    const catatan = document.getElementById('fCatatan').value.trim();
+
+    if (!nama) { alert('Nama tidak boleh kosong!'); return; }
+    if (!email || !email.includes('@')) { alert('Email tidak valid!'); return; }
+    if (!pesanan) { alert('Pilih menu kopi terlebih dahulu!'); return; }
+    if (!jumlah || jumlah < 1) { alert('Jumlah minimal 1!'); return; }
+
+    const hargaSatuan = hargaMap[pesanan] || 0;
+    const totalHarga = hargaSatuan * jumlah;
+    const noOrder = 'KAJ-' + String(orderCounter).padStart(4, '0');
+    orderCounter++;
+
+    pesananList.push({ noOrder, nama, email, pesanan, suhu, jumlah, hargaSatuan, totalHarga, catatan });
+    renderTabel();
+
+    // Reset form
+    document.getElementById('fNama').value = '';
+    document.getElementById('fEmail').value = '';
+    document.getElementById('fTelp').value = '';
+    document.getElementById('fPesanan').value = '';
+    document.getElementById('fJumlah').value = '1';
+    document.getElementById('fCatatan').value = '';
+  }
+
+  function hapusBaris(index) {
+    pesananList.splice(index, 1);
+    renderTabel();
+  }
+
+  function hapusSemuaPesanan() {
+    if (confirm('Hapus semua pesanan?')) {
+      pesananList = [];
+      renderTabel();
+    }
+  }
+
+  function renderTabel() {
+    const tbody = document.getElementById('tabelBody');
+    const tabel = document.getElementById('tabelPesanan');
+    
+    if (pesananList.length === 0) {
+      tabel.style.display = 'none';
+      return;
+    }
+    tabel.style.display = 'block';
+
+    let html = '';
+    let grandTotal = 0;
+
+    pesananList.forEach((p, i) => {
+      grandTotal += p.totalHarga;
+      html += `
+        <tr>
+          <td><strong>${i + 1}</strong></td>
+          <td><span class="order-number">${p.noOrder}</span></td>
+          <td><strong>${p.nama}</strong></td>
+          <td style="font-size:0.82rem;">${p.email}</td>
+          <td>${p.pesanan.split(' - ')[0]}</td>
+          <td><span style="font-size:0.8rem; background:rgba(92,51,23,0.1); color:var(--medium-roast); border-radius:4px; padding:2px 8px;">${p.suhu}</span></td>
+          <td class="text-center"><strong>${p.jumlah}</strong></td>
+          <td>${formatRupiah(p.hargaSatuan)}</td>
+          <td><strong style="color:var(--caramel);">${formatRupiah(p.totalHarga)}</strong></td>
+          <td style="font-size:0.82rem; color:var(--text-muted);">${p.catatan || '-'}</td>
+          <td><span class="badge-status">Diproses</span></td>
+          <td>
+            <button class="btn btn-sm" style="background:rgba(220,53,69,0.1); color:#dc3545; border:1px solid rgba(220,53,69,0.3); border-radius:8px;" onclick="hapusBaris(${i})">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    tbody.innerHTML = html;
+    document.getElementById('grandTotal').textContent = formatRupiah(grandTotal);
+
+    tabel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>

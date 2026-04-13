@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produk - Kopi adalah Jawaban</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .menu-badge {
+      background: var(--caramel);
+      color: var(--espresso);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--latte);
+      transition: all 0.35s cubic-bezier(.25,.46,.45,.94);
+      height: 100%;
+    }
+    .menu-card:hover {
+      box-shadow: 0 20px 50px rgba(92,51,23,0.15);
+      transform: translateY(-6px);
+      border-color: var(--caramel);
+    }
+    .menu-img {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+    .menu-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .menu-card:hover .menu-img img { transform: scale(1.08); }
+    .menu-card-body {
+      padding: 20px 22px 24px;
+    }
+    .menu-card-body h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+    .menu-card-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .menu-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 2px solid var(--latte);
+      color: var(--text-muted);
+      border-radius: 50px;
+      padding: 7px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--caramel);
+      border-color: var(--caramel);
+      color: var(--espresso);
+    }
+    .section-separator {
+      width: 80px;
+      height: 3px;
+      background: var(--caramel);
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">Kopi adalah Jawaban</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link active" href="produk.html">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link btn-pesan" href="form.html">Pesan Sekarang</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero dark-footer">
+  <div class="container position-relative z-1">
+    <p class="section-eyebrow-light">Menu Kami</p>
+    <h1 class="page-hero-title">Pilihan Kopi Terbaik</h1>
+    <p class="page-hero-sub">Dipilih dengan cermat, diseduh dengan cinta.</p>
+    <div class="page-hero-deco"></div>
+  </div>
+</section>
+
+<!-- MAIN PRODUCTS -->
+<section class="py-5 section-dark">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-eyebrow-light">Kopi Unggulan</p>
+      <h2 class="section-title-light">Menu Andalan</h2>
+      <div class="section-separator"></div>
+    </div>
+    <div class="row g-4">
+      <!-- Kopi Hitam -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark border-0 text-white h-100" style="border-radius:18px; overflow:hidden; transition:all 0.35s; border:1px solid rgba(198,134,66,0.2) !important;">
+          <div style="height:230px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80" class="card-img-top" alt="Kopi Hitam" style="height:100%; object-fit:cover; transition:transform 0.5s ease;"/>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0" style="font-family:'Playfair Display',serif;">Kopi Hitam</h5>
+              <span class="menu-badge">Andalan</span>
+            </div>
+            <p class="card-text" style="font-size:0.88rem; color:rgba(245,234,214,0.65); line-height:1.6;">Kopi murni tanpa campuran, diseduh dari biji pilihan Toraja. Pekat, kuat, dan penuh karakter.</p>
+            <hr style="border-color:rgba(198,134,66,0.2);"/>
+            <div class="d-flex justify-content-between align-items-center">
+              <span style="font-size:1.1rem; font-weight:700; color:var(--caramel);">Rp 18.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Latte -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark border-0 text-white h-100" style="border-radius:18px; overflow:hidden; border:1px solid rgba(198,134,66,0.2) !important;">
+          <div style="height:230px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=500&q=80" class="card-img-top" alt="Latte" style="height:100%; object-fit:cover;"/>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0" style="font-family:'Playfair Display',serif;">Caffe Latte</h5>
+              <span class="menu-badge">Favorit</span>
+            </div>
+            <p class="card-text" style="font-size:0.88rem; color:rgba(245,234,214,0.65); line-height:1.6;">Espresso lembut berpadu dengan steamed milk pilihan. Sempurna untuk menemani pagi yang santai.</p>
+            <hr style="border-color:rgba(198,134,66,0.2);"/>
+            <div class="d-flex justify-content-between align-items-center">
+              <span style="font-size:1.1rem; font-weight:700; color:var(--caramel);">Rp 28.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Cappuccino -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark border-0 text-white h-100" style="border-radius:18px; overflow:hidden; border:1px solid rgba(198,134,66,0.2) !important;">
+          <div style="height:230px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&q=80" class="card-img-top" alt="Cappuccino" style="height:100%; object-fit:cover;"/>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0" style="font-family:'Playfair Display',serif;">Cappuccino</h5>
+              <span class="menu-badge">Klasik</span>
+            </div>
+            <p class="card-text" style="font-size:0.88rem; color:rgba(245,234,214,0.65); line-height:1.6;">Kombinasi sempurna espresso, steamed milk, dan milk foam tebal. Teksturnya luar biasa.</p>
+            <hr style="border-color:rgba(198,134,66,0.2);"/>
+            <div class="d-flex justify-content-between align-items-center">
+              <span style="font-size:1.1rem; font-weight:700; color:var(--caramel);">Rp 30.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Espresso -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card bg-dark border-0 text-white h-100" style="border-radius:18px; overflow:hidden; border:1px solid rgba(198,134,66,0.2) !important;">
+          <div style="height:230px; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500&q=80" class="card-img-top" alt="Espresso" style="height:100%; object-fit:cover;"/>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0" style="font-family:'Playfair Display',serif;">Espresso</h5>
+              <span class="menu-badge">Pure</span>
+            </div>
+            <p class="card-text" style="font-size:0.88rem; color:rgba(245,234,214,0.65); line-height:1.6;">Murni dan intens. Shot tunggal atau double shot, diseduh dari biji Flores terbaik pilihan kami.</p>
+            <hr style="border-color:rgba(198,134,66,0.2);"/>
+            <div class="d-flex justify-content-between align-items-center">
+              <span style="font-size:1.1rem; font-weight:700; color:var(--caramel);">Rp 22.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE MENU -->
+<section class="py-5 section-cream">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-eyebrow">Menu Lainnya</p>
+      <h2 class="section-title">Lebih Banyak Pilihan</h2>
+      <div class="section-separator"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=500&q=80" alt="Americano"/>
+          </div>
+          <div class="menu-card-body">
+            <h5>Americano</h5>
+            <p>Espresso yang diencerkan dengan air panas. Rasa kopi yang kuat namun lebih ringan dari black coffee.</p>
+            <div class="menu-footer">
+              <span class="product-price">Rp 20.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&q=80" alt="Cold Brew"/>
+          </div>
+          <div class="menu-card-body">
+            <h5>Cold Brew</h5>
+            <p>Diseduh dingin selama 12 jam untuk menghasilkan rasa yang smooth, manis alami, dan menyegarkan.</p>
+            <div class="menu-footer">
+              <span class="product-price">Rp 32.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=500&q=80" alt="Matcha Latte"/>
+          </div>
+          <div class="menu-card-body">
+            <h5>Matcha Latte</h5>
+            <p>Untuk kamu yang ingin alternatif non-kopi. Matcha premium Jepang berpadu dengan susu segar.</p>
+            <div class="menu-footer">
+              <span class="product-price">Rp 29.000</span>
+              <a href="form.html" class="btn btn-primary-custom btn-sm">Pesan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section py-5 text-center">
+  <div class="container">
+    <h2 class="cta-title">Tertarik dengan Menu Kami?</h2>
+    <p class="cta-sub">Pesan sekarang dan nikmati kopi terbaik kami.</p>
+    <a href="form.html" class="btn btn-primary-custom btn-lg mt-3">Pesan Sekarang</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h4 class="footer-brand">Kopi adalah Jawaban</h4>
+        <p class="footer-desc">Meracik kopi terbaik dari biji pilihan petani lokal Nusantara sejak 2019.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Halaman</h6>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Lainnya</h6>
+        <ul class="footer-links">
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="form.html">Pemesanan</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Kunjungi Kami</h6>
+        <p class="footer-contact"><i class="bi bi-geo-alt-fill me-2"></i>Jl. Kopi Nusantara No.17, Surabaya</p>
+        <p class="footer-contact"><i class="bi bi-clock-fill me-2"></i>Senin - Minggu, 07.00 - 22.00</p>
+        <p class="footer-contact"><i class="bi bi-telephone-fill me-2"></i>+62 812-3456-7890</p>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <p class="footer-copy text-center">&copy; 2024 Kopi adalah Jawaban. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

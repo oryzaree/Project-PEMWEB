@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kopi adalah Jawaban</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">Kopi adalah Jawaban</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link btn-pesan" href="form.html">Pesan Sekarang</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section d-flex align-items-center" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative z-1 text-center text-white">
+    <p class="hero-tagline">Selamat datang di</p>
+    <h1 class="hero-title">Kopi adalah<br><em>Jawaban</em></h1>
+    <p class="hero-sub">Setiap tegukan adalah percakapan antara jiwa dan cita rasa.<br>Kami hadir untuk menemani hari-harimu.</p>
+    <div class="mt-4 d-flex gap-3 justify-content-center flex-wrap">
+      <a href="produk.html" class="btn btn-primary-custom">Lihat Menu</a>
+      <a href="form.html" class="btn btn-outline-custom">Pesan Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<section class="intro-strip py-4">
+  <div class="container">
+    <div class="row text-center g-3">
+      <div class="col-md-4">
+        <div class="strip-item">
+          <i class="bi bi-cup-hot-fill strip-icon"></i>
+          <span>Biji Kopi Pilihan</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="strip-item">
+          <i class="bi bi-heart-fill strip-icon"></i>
+          <span>Dibuat dengan Cinta</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="strip-item">
+          <i class="bi bi-star-fill strip-icon"></i>
+          <span>Kepuasan Pelanggan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TEASER -->
+<section class="py-5 section-light">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="img-frame">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="Kopi kami" class="img-fluid rounded-custom shadow-custom"/>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <p class="section-eyebrow">Cerita Kami</p>
+        <h2 class="section-title">Lebih dari Sekadar Kopi</h2>
+        <p class="section-body">Kami percaya bahwa secangkir kopi yang sempurna adalah awal dari percakapan terbaik, ide paling brilian, dan hari yang paling produktif. Sejak 2019, kami meracik kopi dengan biji pilihan dari petani lokal Nusantara.</p>
+        <a href="tentang.html" class="btn btn-primary-custom mt-3">Baca Selengkapnya</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="py-5 section-dark">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-eyebrow-light">Menu Unggulan</p>
+      <h2 class="section-title-light">Pilihan Terbaik Kami</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Kopi Hitam"/>
+          </div>
+          <div class="product-body">
+            <h5>Kopi Hitam</h5>
+            <p>Pekat, kuat, autentik.</p>
+            <span class="product-price">Rp 18.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80" alt="Latte"/>
+          </div>
+          <div class="product-body">
+            <h5>Latte</h5>
+            <p>Lembut, creamy, sempurna.</p>
+            <span class="product-price">Rp 28.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80" alt="Cappuccino"/>
+          </div>
+          <div class="product-body">
+            <h5>Cappuccino</h5>
+            <p>Klasik, berbusa, hangat.</p>
+            <span class="product-price">Rp 30.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&q=80" alt="Espresso"/>
+          </div>
+          <div class="product-body">
+            <h5>Espresso</h5>
+            <p>Intense, pure, powerful.</p>
+            <span class="product-price">Rp 22.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="produk.html" class="btn btn-outline-custom">Lihat Semua Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="py-5 section-cream">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-eyebrow">Kata Mereka</p>
+      <h2 class="section-title">Pelanggan Setia Kami</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p>"Kopi Hitam-nya juara! Setiap pagi saya selalu balik ke sini. Aromanya luar biasa."</p>
+          <div class="testi-author">- Rizky A.</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card testi-featured">
+          <div class="testi-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p>"Latte art-nya cantik banget, rasanya juga enak. Tempat yang nyaman buat kerja."</p>
+          <div class="testi-author">- Sari M.</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+          </div>
+          <p>"Cappuccino di sini beda banget rasanya, busa susunya sempurna. Recommended!"</p>
+          <div class="testi-author">- Budi S.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section text-center py-5">
+  <div class="container">
+    <h2 class="cta-title">Siap Menemukan Jawabanmu?</h2>
+    <p class="cta-sub">Kunjungi kami atau pesan langsung dari sini.</p>
+    <a href="form.html" class="btn btn-primary-custom btn-lg mt-3">Pesan Sekarang</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h4 class="footer-brand">Kopi adalah Jawaban</h4>
+        <p class="footer-desc">Meracik kopi terbaik dari biji pilihan petani lokal Nusantara sejak 2019.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Halaman</h6>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Lainnya</h6>
+        <ul class="footer-links">
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="form.html">Pemesanan</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Kunjungi Kami</h6>
+        <p class="footer-contact"><i class="bi bi-geo-alt-fill me-2"></i>Jl. Kopi Nusantara No.17, Surabaya</p>
+        <p class="footer-contact"><i class="bi bi-clock-fill me-2"></i>Senin - Minggu, 07.00 - 22.00</p>
+        <p class="footer-contact"><i class="bi bi-telephone-fill me-2"></i>+62 812-3456-7890</p>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <p class="footer-copy text-center">&copy; 2024 Kopi adalah Jawaban. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

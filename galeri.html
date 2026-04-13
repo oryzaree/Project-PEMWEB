@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri - Kopi adalah Jawaban</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 220px;
+      gap: 12px;
+    }
+    .g-item { border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; }
+    .g-item img { width:100%; height:100%; object-fit:cover; transition: transform 0.5s ease; }
+    .g-item:hover img { transform: scale(1.08); }
+    .g-overlay {
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(26,10,0,0.75), transparent 50%);
+      opacity:0; transition: opacity 0.35s;
+      display:flex; align-items:flex-end; padding:16px;
+    }
+    .g-item:hover .g-overlay { opacity:1; }
+    .g-label { color:var(--cream); font-family:'Playfair Display',serif; font-size:0.95rem; }
+
+    /* Mosaic layout */
+    .g1 { grid-column: span 4; grid-row: span 2; }
+    .g2 { grid-column: span 4; }
+    .g3 { grid-column: span 4; }
+    .g4 { grid-column: span 4; }
+    .g5 { grid-column: span 4; grid-row: span 2; }
+    .g6 { grid-column: span 4; }
+    .g7 { grid-column: span 6; }
+    .g8 { grid-column: span 6; }
+    .g9 { grid-column: span 4; }
+    .g10 { grid-column: span 4; }
+    .g11 { grid-column: span 4; }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+      .g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8,.g9,.g10,.g11 { grid-column: span 1; grid-row: span 1; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display:none;
+      position:fixed; inset:0; z-index:9999;
+      background:rgba(10,4,0,0.95);
+      align-items:center; justify-content:center;
+    }
+    .lightbox.active { display:flex; }
+    .lb-img { max-width:85vw; max-height:85vh; border-radius:12px; }
+    .lb-close {
+      position:fixed; top:24px; right:32px;
+      color:var(--caramel); font-size:2rem; cursor:pointer;
+      background:none; border:none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">Kopi adalah Jawaban</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+        <li class="nav-item"><a class="nav-link active" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link btn-pesan" href="form.html">Pesan Sekarang</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero cream-footer">
+  <div class="container position-relative z-1">
+    <p class="section-eyebrow-light">Visual Kami</p>
+    <h1 class="page-hero-title">Galeri</h1>
+    <p class="page-hero-sub">Momen-momen terbaik dari dapur dan kedai kami.</p>
+    <div class="page-hero-deco"></div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="py-5 section-cream">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="g-item g1" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Suasana Kedai"/>
+        <div class="g-overlay"><span class="g-label">Suasana Kedai</span></div>
+      </div>
+      <div class="g-item g2" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Kopi Hitam"/>
+        <div class="g-overlay"><span class="g-label">Kopi Hitam</span></div>
+      </div>
+      <div class="g-item g3" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=600&q=80" alt="Latte Art"/>
+        <div class="g-overlay"><span class="g-label">Latte Art</span></div>
+      </div>
+      <div class="g-item g4" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Barista"/>
+        <div class="g-overlay"><span class="g-label">Barista Kami</span></div>
+      </div>
+      <div class="g-item g5" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="Biji Kopi"/>
+        <div class="g-overlay"><span class="g-label">Biji Kopi Pilihan</span></div>
+      </div>
+      <div class="g-item g6" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80" alt="Cappuccino"/>
+        <div class="g-overlay"><span class="g-label">Cappuccino</span></div>
+      </div>
+      <div class="g-item g7" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=800&q=80" alt="Espresso"/>
+        <div class="g-overlay"><span class="g-label">Espresso Shot</span></div>
+      </div>
+      <div class="g-item g8" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=800&q=80" alt="Americano"/>
+        <div class="g-overlay"><span class="g-label">Americano</span></div>
+      </div>
+      <div class="g-item g9" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" alt="Cold Brew"/>
+        <div class="g-overlay"><span class="g-label">Cold Brew</span></div>
+      </div>
+      <div class="g-item g10" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Latte Art 2"/>
+        <div class="g-overlay"><span class="g-label">Latte Art Special</span></div>
+      </div>
+      <div class="g-item g11" onclick="openLB(this)">
+        <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&q=80" alt="Coffee Beans"/>
+        <div class="g-overlay"><span class="g-label">Aroma Biji Kopi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLB()"><i class="bi bi-x-lg"></i></button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+</div>
+
+<!-- CTA -->
+<section class="cta-section py-5 text-center">
+  <div class="container">
+    <h2 class="cta-title">Suka Dengan Apa yang Kamu Lihat?</h2>
+    <p class="cta-sub">Kunjungi kedai kami atau pesan langsung sekarang.</p>
+    <a href="form.html" class="btn btn-primary-custom btn-lg mt-3">Pesan Sekarang</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h4 class="footer-brand">Kopi adalah Jawaban</h4>
+        <p class="footer-desc">Meracik kopi terbaik dari biji pilihan petani lokal Nusantara sejak 2019.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Halaman</h6>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="produk.html">Produk</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="footer-heading">Lainnya</h6>
+        <ul class="footer-links">
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="form.html">Pemesanan</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Kunjungi Kami</h6>
+        <p class="footer-contact"><i class="bi bi-geo-alt-fill me-2"></i>Jl. Kopi Nusantara No.17, Surabaya</p>
+        <p class="footer-contact"><i class="bi bi-clock-fill me-2"></i>Senin - Minggu, 07.00 - 22.00</p>
+        <p class="footer-contact"><i class="bi bi-telephone-fill me-2"></i>+62 812-3456-7890</p>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <p class="footer-copy text-center">&copy; 2024 Kopi adalah Jawaban. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  function openLB(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lbImg').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLB();
+  });
+</script>
+</body>
+</html>
